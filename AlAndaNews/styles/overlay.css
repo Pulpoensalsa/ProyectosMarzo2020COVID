@@ -1,0 +1,45 @@
+
+/* Efecto Imagen OVERLAY */
+
+.image_container {
+    position: relative;
+  }
+
+.text {
+    font-family: 'RobotoMedium';
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .image {
+    display: block;
+    width:18rem;
+    height:26rem; 
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color:#008cba;
+  }
+  
+  .image_container:hover .overlay {
+    opacity: 0.9;
+  }
+
+/* FIN Efecto OVERLAY Imagen */
+

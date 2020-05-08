@@ -1,0 +1,321 @@
+body{
+    background: #85DCBa;
+    font-family: Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width:100vw;
+    overflow-x: hidden;
+    padding:0;
+    margin:0;
+} 
+
+@font-face {
+    font-family: 'RobotoMedium';
+    src: URL('../lib/Roboto/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'SitiMaesaroh';
+    src: URL('../lib/Lemon\ Juice.otf') format('truetype');
+}
+/* 
+    src: URL('lib/SitiMaesaroh.otf') format('truetype'); 
+    src: URL('lib/AntiqueCherry.ttf') format('truetype');
+*/
+
+*, *:before, *:after{
+    box-sizing: border-box;
+}
+
+.container{
+    height: 100vh;
+    width:100vw;
+    display:grid;
+    grid-template-rows: 10% 15% 35% ;
+    max-width: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    font-family: 'RobotoMedium';
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    color: floralwhite;
+    align-content: flex-end;
+}
+
+.escudo{
+    width: 6rem;
+    align-self: center;
+    justify-self: center;
+    z-index: 1001;
+}
+
+.titulo_container{
+    width: 90%;
+    height: 6rem;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 8rem;
+    align-self: center;
+}
+
+.titulo {
+    position: absolute;
+    font-family: 'SitiMaesaroh';
+    font-weight: normal;
+    font-size: 7em;
+    line-height: .9em;
+    text-align: center;
+}
+
+.titulo2 {
+    font-family: 'SitiMaesaroh';
+    margin-left: 0.1em;
+    font-weight: normal;
+    font-size: 7rem;
+    line-height: .9em;
+    color: floralwhite;
+    position: absolute;
+    text-align: center;
+}
+
+.container1{
+  height: auto;
+  /* background-color: #E8A87C;*/
+  background-color: #EAFC8c;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container2{
+  height: 100vh;
+  width: 100vw; 
+  background-color: #cccccc;
+}
+
+.subcontainer2{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+}
+/*
+  background: #def2f1;
+  background: #2b7a78; 
+*/
+
+ .container3{
+    height: 100vh;
+    background-color: #e683a9;   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+    /*background-color:yellowgreen;
+    background-blend-mode: multiply; */
+} 
+
+.subcontainer3izq{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    justify-content: center;
+
+}
+
+.foto_instituto
+{
+  width: 30rem;
+  max-width: 30rem;
+  height: 20rem;  
+  max-height: 20rem;
+  border-radius: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+
+}
+
+.subcontainer3der{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    text-align: center;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    min-width: 250px; 
+    align-self: center;
+}
+
+.box1{
+  z-index: 0;
+  width: 340px;
+  height: 340px;
+  border: 16px solid #def2f1;
+  overflow: hidden;
+  transform: rotateZ(65deg);
+  opacity: 0.5;
+  margin-left: 10%;
+  position: absolute;
+  
+}
+
+h2{
+    font-family: 'SitiMaesaroh';
+    color:white;
+    font-size: 3em;
+}
+
+.h2_text{
+    font-family: 'SitiMaesaroh';
+    color:white;
+    font-size: 3.5em;
+    margin:0.8rem;
+}
+
+h3{
+  font-family: 'RobotoMedium';
+  color:white;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.h3_text{
+    font-family: 'RobotoMedium';
+    color:white;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-left:1rem;
+    margin-right:1rem;
+  }
+
+.subtext{
+    font-size: 1rem;
+    font-family: 'RobotoMedium';
+    color: white;
+    text-align: center;
+}
+
+p{
+    line-height: 1.5em;
+    color: rgb(194,194,194)
+}
+
+.linea{
+    /* align-self: end; */
+    width: 50%;
+    border-right: 1px solid white;
+    height: 40%;
+    margin-top: 6em;
+    position: relative;
+}
+
+.linea::after{
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 11px 11px 0 11px;
+    border-color: white transparent transparent transparent;
+    right: -.71em;
+    bottom: -2px;
+}
+
+.mountains, .trees {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+}
+
+.mountains{
+    top:0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.trees{
+    top:85%;
+    height: 14vh;
+}
+
+@media only screen and (max-width: 400px)
+{
+    .titulo{
+        font-size: 5em;
+    }
+    .titulo2{
+       font-size: 5em;
+    }  
+
+    .titulo_container{
+        margin-top: 8rem;
+    }
+
+    .foto_instituto{
+        width: 20rem;
+        max-width: 20rem;
+        height: 15rem;  
+        max-height: 15rem;
+    }
+    .box1{
+        width: 280px;
+        height: 280px;
+    }
+} 
+/* 
+.animated {
+    background-color: green;
+    background-position: left top;
+    padding-top:95px;
+    margin-bottom:60px;
+    -webkit-animation-duration: 10s;animation-duration: 10s;
+    -webkit-animation-fill-mode: both;animation-fill-mode: both;
+ }
+
+ @-webkit-keyframes fadeOut {
+    0% {opacity: 0;}
+    100% {opacity: 0.8;}
+ }
+
+ @keyframes fadeOut {
+    0% {opacity: 0;}
+    100% {opacity: 0.8;}
+ }
+
+ .fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+ }
+
+ .visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+  }
+
+  .hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+  } 
+  */

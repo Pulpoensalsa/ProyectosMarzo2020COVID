@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function probando() {
+
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => reject("BAD DONE!"), 1000);  
+            });
+
+            try{
+                let result = await promise; // espera hasta que la promesa se resuelva
+            }
+            catch(error)
+            {
+                return error;
+            }
+            return result; // "done!"
+        }
+
+        probando()
+        .then(console.log)
+        .catch((texto)=> console.error("Vapa pete: " + texto));
+
+    </script>
+</body>
+
+</html>

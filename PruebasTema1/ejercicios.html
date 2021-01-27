@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios</title>
+</head>
+
+<body>
+    <p id="demo" onclick="miFuncion()">Hazme Click</p>
+    <button id="boton1" onclick="windowButton01();" hidden>Ejercicio 1</button>
+    <button id="boton2" onclick="windowButton02();" hidden>Ejercicio 2</button>
+    <button id="boton3" onclick="windowButton03();" hidden>Ejercicio 3</button>
+    <button id="boton4" onclick="windowButton04();" hidden>Ejercicio 4</button>
+    <button id="boton44" onclick="windowButton044();" hidden>Ejercicio 4 - Inicial</button>
+    <button id="boton5" onclick="windowButton05();" hidden>Ejercicio 5</button>
+    <button id="boton6A" onclick="windowButton06A();" hidden>Ejercicio 6A</button>
+    <button id="boton6B" onclick="windowButton06B();" hidden>Ejercicio 6B</button>
+
+
+    <script>
+        var miniWindow1 = null;
+        var miniWindow2 = null;
+        var miniWindow5 = null;
+        var numeroIn = 0;
+        var numeroFin = 0;
+        var ancho = 400;
+        var largo = 400;
+
+        function miFuncion() {
+            document.getElementById("demo").innerHTML = "¡ME HAS HECHO CLICK!";
+            document.getElementById("boton1").style.display = "block";
+            document.getElementById("boton2").style.display = "block";
+            document.getElementById("boton3").style.display = "block";
+            document.getElementById("boton4").style.display = "block";
+            document.getElementById("boton44").style.display = "block";
+            document.getElementById("boton5").style.display = "block";
+            document.getElementById("boton6A").style.display = "block";
+            document.getElementById("boton6B").style.display = "block";
+        }
+
+        function windowButton01() {
+            miniWindow1 = window.open("", "", "width=300,height=300");
+            miniWindow1.document.write("<p>Ventanita 1</p>");
+        }
+
+        function windowButton02() {
+            if (miniWindow2 == null) {
+                miniWindow2 = window.open("", "", "width=400,height=400,toolbar=yes, resizable=no, scrollbars=yes");
+                miniWindow2.document.write("<p>Ventanita 2</p>");
+                console.log("Ventana abierta");
+            } else {
+                console.log("Ventana ya abierta");
+            }
+        }
+
+        //Solo responde con el close y abierto del boton 3, con el cierre del navegador no funciona
+        function windowButton03() {
+            if (miniWindow2 == null) {
+                console.log("Ventana ya cerrada");
+            } else if (miniWindow2.close) {
+                miniWindow2.close();
+                console.log("Ventana cerrada");
+                miniWindow2 = null;
+            }
+        }
+
+        function windowButton04() {
+            miniWindow2 = window.open("", "", "width=400,height=400,toolbar=yes, resizable=no, scrollbars=yes");
+            miniWindow2.document.write("<p>Ventanita 2</p>");
+            setInterval(function () {
+                miniWindow2.moveBy(50, 50);
+            }, 2000);
+        }
+
+        function windowButton044() {
+            if (miniWindow2 != null) {
+                miniWindow2.close();
+                miniWindow2 = window.open("", "", "width=400,height=400,toolbar=yes, resizable=no, scrollbars=yes");
+                miniWindow2.moveTo(50, 50);
+                miniWindow2.focus();
+            }
+        }
+
+        //Darle al f5 en la ventana principal para quitar el bucle
+        function windowButton05() {
+            miniWindow5 = window.open("id", "", +",resizable=yes" + ",height=" + Math.abs(ancho) + ",width=" + Math.abs(
+                largo));
+            var x = window.screen.height;
+            var y = window.screen.width;
+            var randomX = (Math.random() * x) * 2;
+            var randomY = (Math.random() * y) * 2;
+            miniWindow5.moveTo(randomX, randomY);
+            miniWindow5.focus();
+            setInterval(function () {
+                largo = largo - 40;
+                ancho = ancho - 40;
+                miniWindow5.resizeBy(-40, -40);
+                if (Math.abs(ancho) > 400 || Math.abs(ancho) < 60) {
+                    largo = largo * -1 + -40;
+                    ancho = ancho * -1 + -40;
+                }
+                miniWindow5.close();
+                miniWindow5 = window.open("id", "", +",resizable=yes" + ",height=" + Math.abs(ancho) +
+                    ",width=" + Math.abs(largo));
+                miniWindow5.moveTo(randomX, randomY);
+                miniWindow5.focus();
+
+                miniWindow5.open();
+            }, 1000);
+        }
+
+        function windowButton06A() {
+            let numeroIn = prompt("Dame numero inicial");
+            let numeroFin = prompt("Dame numero final");
+            if (numeroIn < numeroFin) {
+                setInterval(function () {
+                    if (numeroIn <= numeroFin)
+                        console.log(numeroIn);
+                    numeroIn++;
+                }, 1000);
+            } else {
+                alert("Has introducido un rango de numeros mal");
+            }
+        }
+
+        function repetirNumero() {
+            if (numeroIn <= numeroFin) {
+                console.log(numeroIn);
+                numeroIn++;
+            }
+            setTimeout(repetirNumero, 1000);
+        }
+
+        function windowButton06B() {
+            numeroIn = prompt("Dame numero inicial");
+            numeroFin = prompt("Dame numero final");
+            if (numeroIn <= numeroFin) {
+                setTimeout(repetirNumero(), 1000); 
+            } else {
+                alert("Has introducido un rango de numeros mal");
+            }
+        }
+    </script>
+</body>
+
+</html>

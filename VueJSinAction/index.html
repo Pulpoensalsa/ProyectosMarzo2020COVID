@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="boton1" onclick="abrirVentana()">Abrir Ventana</button>
+    
+    <script>
+        let ventana;
+        function abrirVentana(){
+            ventana = window.open("", "", "width=200,height=100");
+            ventana.onload = cogerMedidas ;
+
+            function cogerMedidas() {
+
+                let innerWidth = ventana.innerWidth;
+                let outerWidht = ventana.outerWidht;
+                let clientWidth = ventana.document.documentElement.clientWidth;
+                let bodyClientWidth = ventana.document.body.clientWidth;
+                let windowWidth = ventana.windowWidth;
+                let pageWidth = ventana.pageWidth;
+                let screenWidth = ventana.screen.width;
+                let availScreenWidth = ventana.screen.availWidth;
+
+                console.log("InnerWidht: " + innerWidth);
+                console.log("OuterWidht: " + outerWidth);
+                console.log(`clientWidht: ${clientWidth}`);
+                console.log(`bodyClientWidth: ${bodyClientWidth}`);
+                console.log(`windowWidth: ${windowWidth}`);
+                console.log(`pageWidth: ${pageWidth}`);
+                console.log(`screeWidth: ${screenWidth}`);
+                console.log(`AvailScreeWidth: ${availScreenWidth}`);
+
+                let width = ventana.innerWidth
+                    || ventana.document.documentElement.clientWidth
+                    || ventana.document.body.clientWidth;
+
+
+                let height = ventana.innerHeight
+                    || ventana.document.documentElement.clientHeight
+                    || ventana.document.body.clientHeight;
+
+                console.log("Anchura" + width);
+                console.log("Altura" + height);
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>
+
+function onlyEven (array) {
+	function isEven(number) {
+		return number % 2 == 0;
+	}
+	var filtered = array.filter(isEven);
+	return filtered;
+}
+
+function onlyOneWord (array) {
+	function hasWhiteSpace(s) {
+		return s.indexOf(' ') <= 0;
+	}
+	var filtered = array.filter(hasWhiteSpace);
+	return filtered;
+}
+
+function multiplyBy10 (array) {
+    var doubled = array.map(function (num) {
+        return num * 10;
+    });
+    return doubled;
+}
+
+function sum (array) {
+	// your code here
+  };
+  
+  function productAll (array) {
+	// your code here
+  };

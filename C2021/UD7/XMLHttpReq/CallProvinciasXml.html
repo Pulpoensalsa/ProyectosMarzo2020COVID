@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+function llamadaServidor(){
+
+    return new Promise( function (resolve, reject) {
+
+        let client = new XMLHttpRequest();
+        client.open("GET", "provincias.xml");
+        client.onload = (respuesta) => 
+        { 
+            if( client.status == 200 )
+                resolve (client.responseXML);
+
+            //console.log(respuesta.currentTarget.responseXML); 
+        };
+        client.onerror= () => {reject("Algo ha fallado")}
+        client.send();
+
+     } );
+}
+
+function contadorTiempo (  ){
+    return new Promise (  function(resolve,reject){
+        setTimeout( ()=>{resolve()} , 4000 );
+      });
+}
+
+
+Promise.race([ llamadaServidor, contadorTiempo ]).then(function (value) {
+            console.log(value);
+        }
+    ).catch ( function (reason) {
+        // Not Called
+        console.log(reason);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

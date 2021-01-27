@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Formulario de validación</title>
+  </head>
+  <body>
+    <div class="container">
+      <form id="form" class="form">
+        <h2>Regístrate con nosotros</h2>
+        <div class="form-control">
+          <label for="username">Nombre Usuario</label>
+          <input type="text" id="username" placeholder="Introduce nombre usuario" required  minlength="3" maxlength="15"/>
+          <small>Mensaje de Error</small>
+        </div>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="text" id="email" placeholder="Introduce email" required pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"/>
+          <small>Mensaje de error</small>
+        </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Introduce password" required/>
+          <small>Mensaje de error</small>
+        </div>
+        <div class="form-control">
+          <label for="password2">Confirmar password</label>
+          <input
+            type="password" 
+            id="password2"
+            placeholder="Introduce password de nuevo"
+            required
+          />
+          <small>Mensaje de error</small>
+        </div>
+        <button id="submitBtn" type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

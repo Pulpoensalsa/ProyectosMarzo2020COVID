@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const a = () => new Promise((resolve) => setTimeout(() => { console.log('a'), resolve() } , 1e3));
+const b = () => new Promise((resolve) => setTimeout(() => { console.log('b'), resolve() }, 1e3));
+const c = () => new Promise((resolve, reject) => setTimeout(() => { console.log('c'); reject('Oops!') }, 1e3));
+const d = () => new Promise((resolve) => setTimeout(() => { console.log('d'), resolve() }, 1e3));
+
+//Ahora vamos a consumirlas:
+a().then(b).then(c).then(d).catch( console.error ).finally( console.log("Finalmente") );
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let resultado=0;
+
+        function calcularNumeroMatematio(callback)
+        {
+            setTimeout(function(){
+                resultado=0;
+                for(let i=0; i<10000000; i++)
+                    resultado+=1;  //Operacion muy pesada 
+                callback("Error");
+
+
+            }, 5000);
+        }
+
+        calcularNumeroMatematio(url, avisameCuandoTermines );
+
+
+
+        function avisameCuandoTermines(error){
+            if(error==null)
+                console.log("Despues de terminada: " + resultado);
+            else
+                console.log("Algo ha fallado");
+        }
+
+
+        console.log(resultado);
+
+        
+
+
+    </script>
+</body>
+</html>

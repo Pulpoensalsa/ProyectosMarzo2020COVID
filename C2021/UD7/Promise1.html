@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let promesa1 = new Promise( function (resolve, reject) {
+            //Aquí es donde se ejecuta el código pesado/lento: 
+            let bandera=0;
+            setTimeout(function(){
+                if(bandera == 1)
+                    resolve("Todo bien");
+                else
+                    reject("Todo mal");
+            }, 6000)
+        } )
+
+        promesa1.then( (resultado) => { console.log(resultado); } ) 
+        .catch ( (error) => console.log(error) )
+        .finally( ()=> {console.log("Esto se imprime sí o sí");
+                        clearInterval(intervalo) });
+
+        
+        let intervalo = setInterval( ()=>{
+            console.log("Esperando a la promesa");
+        }, 1000);
+
+
+
+
+
+
+// let promise = new Promise(function(resolve, reject) {
+//   setTimeout(() => resolve("done!"), 1000);
+// });
+// //Ejecutamos el .then como “resolve”
+// promise.then(
+//   result => alert(result) , //Muestra "done!" después de 1 segundo.
+//   error => alert(error) // No se ejecuta
+// );
+
+
+    </script>
+</body>
+</html>

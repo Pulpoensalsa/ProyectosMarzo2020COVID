@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        function tareaPesada(tiempo, callback , callbackError ) {
+            setTimeout( function() {
+                let num = 3;  
+
+                if (num < 4)   /// Si es menor 4, lanzo un error.
+                {
+                    callbackError();
+                }
+                else
+                {
+                    callback(num);
+                    
+                }
+            } , tiempo);
+        }
+
+        tareaPesada(1000
+            , function() { alert(numAlumnos); }
+            , function() { alert("La tarea pesada ha generado un error");});
+
+        tareaPesada(1000
+        , (numAlumnos) => alert(numAlumnos)
+        , () => alert("La tarea pesada ha generado un error"));
+
+
+
+
+        setTimeout(function() {
+            console.log("He ejecutado la función");
+        }, 2000);
+
+
+        function terminadoTimeOut(){
+            console.log("He ejecutado la función");
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>
+

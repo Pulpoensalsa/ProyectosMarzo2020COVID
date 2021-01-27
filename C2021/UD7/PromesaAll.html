@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function promiseCall(waitSecond, returnData) 
+        {
+            return new Promise( function (resolve, reject) {
+                //Tarea requiere asincronía:
+                setTimeout( function() { resolve(returnData); }, waitSecond );
+            });
+        };
+
+        function promiseCallRejected(waitSecond, returnData)
+        {
+            return new Promise( function (resolve, reject) {
+                //Tarea requiere asincronía:
+                setTimeout( function() { reject("Soy el patito feo"); }, waitSecond );
+            });
+        };
+
+        let p1 = promiseCall(4000, "one");
+        let p2 = promiseCall(6000, "two");
+        let p3 = promiseCallRejected(3000, "three");
+        let p4 = promiseCall(5000, "four");
+
+        //  all  --> Se termina de ejecutar cuando todas la promesas son resolved.     
+        //  allSettled --> Se termina de ejecutar cuando todas las 
+        //                 promesas hayan terminados (resolved o rejected).   
+        //
+        //  any     --> Se termina de ejecutar cuando la primera de las promesas es resolved. Si alguna
+        //                es rejected previamente, hace cosi omiso de ella, y busca la primera resolved. 
+        //  race    --> Se termina de ejecutar con la primera de las promesas que se haya terminado(tanto resolved como rejected). 
+
+        // Calling Promise 1 - 4 in Promise.all()
+        Promise.race([p1, p2, p3, p4]).then(function (value) {
+                console.log(value);
+            }
+        ).catch ( function (reason) {
+            // Not Called
+            console.log(reason);
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

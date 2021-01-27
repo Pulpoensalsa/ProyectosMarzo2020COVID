@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 01</title>
+    </head>
+    <body>
+        <p id="demo" onclick="miFuncion()">Hazme Click</p>
+    <script>
+    function miFuncion() {
+  
+        document.getElementById("demo").innerHTML = "¡ME HAS HECHO CLICK!";
+        var boton = document.createElement("button");
+        boton.innerHTML = "Ejercicio 01";
+        document.body.appendChild(boton);
+
+        boton.onclick = function() {
+        window.open('https://www.jprats.com', '_blank');
+    };
+}
+
+</script>
+
+</body>
+</html>

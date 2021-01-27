@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>A JavaScript Calculator</title>
+    <style>
+     p, input { font-family: monospace; }
+     p { white-space: pre; }
+    </style>
+  </head>
+  <body>
+    
+    <div id="myCalc">
+      <p>x <input class="calc-x-input" value="0"></p>
+      <p>y <input class="calc-y-input" value="0"></p>
+      <p>--------------------</p>
+      <p>= <span class="calc-result"></span></p>
+    </div>
+
+    <script type="text/javascript">
+
+    window.onload=iniciar;
+
+    let xx,yy,res;
+    function iniciar(){
+        xx = document.querySelector('input.calc-x-input');
+        yy = document.querySelector('input.calc-y-input');
+        res = document.querySelector('span.calc-result');
+
+        xx.addEventListener("change", actualizarCambios);
+    }
+
+    function actualizarCambios(e){
+        let campo = e.target;
+        if( !isNaN(campo.value) ){
+            if(res.innerText == undefined)
+                res.innerText=0;
+            res.innerText = res.innerText + campo.value;
+        }
+    }
+
+    </script>
+  </body>
+</html>

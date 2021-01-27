@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html xmlns="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ejercicio 06B</title>
+
+<script >
+let i = parseInt(prompt("Ingrese el primer numero: "));
+let b = parseInt(prompt("Ingrese el segundo numero: "));
+
+
+function imprimirNumero(num) {
+    if(num == i)
+    {
+        document.write(num + "<br>"); 
+        imprimirNumero(num + 1);
+    }
+    else{
+        setTimeout(function() {
+        if(num <= b) {
+                document.write(num + "<br>"); 
+                imprimirNumero(num + 1);
+        }
+        }, 1000 );
+    }
+}
+
+imprimirNumero(i);
+
+
+
+
+
+</script>
+</head>
+
+<body>
+  
+</body>
+</html>

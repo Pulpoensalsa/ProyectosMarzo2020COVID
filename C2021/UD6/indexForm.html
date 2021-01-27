@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .error {
+            border: solid 2px #FF0000;
+        }
+
+        input:invalid {
+            background-color: #ffdddd;
+            border: solid 2px #FF0000;
+        }
+
+        /* form:invalid {
+            border: 5px solid #ffdddd;
+        } */
+
+        input:valid {
+            background-color: #ddffdd;
+        }
+
+        form:valid {
+            border: 5px solid #ddffdd;
+        }
+
+        /* input:required {
+            border-color: #800000;
+            border-width: 3px;
+        } */
+    </style>
+
+</head>
+
+<body>
+    <form action="/login.php" id="formulario">
+        <p>Usuario: <input type="text" name="usuario" id="usuario" required minlength="3"></p>
+        <p>Clave: <input type="text" name="clave" id="clave" required minlength="5"></p>
+        <input id="enviar" type="submit" value="Entrar">
+    </form>
+
+    <script>
+        window.onload = iniciar;
+
+        function iniciar() {
+            document.getElementById("enviar").addEventListener('click', validarFormulario);
+        }
+
+        function validarNombre() {
+            let usuario = document.getElementById('usuario');
+            if (!usuario.checkValidity()) {
+                if (usuario.validity.valueMissing) {
+                    //usuario.setCustomValidity( "No has escrito nada en el campo usuario");
+                } else if (usuario.validity.tooShort) {
+                    //  usuario.setCustomValidity("Nombre de usuario demasiado corto");
+                }
+
+                // if (!usuario.classList.contains("error")) 
+                //     usuario.classList.add("error");
+
+                return false;
+            } else {
+                // usuario.classList.remove("error");
+                return true;
+            }
+        }
+
+        function validarClave() {
+            let clave = document.getElementById('clave');
+            if (!clave.checkValidity()) {
+                //  if (clave.validity.valueMissing)
+                // clave.setCustomValidity('No has escrito nada en el campo clave');
+                //  else if (clave.validity.tooShort)
+                // clave.setCustomValidity("'Nombre de usuario demasiado clave'");
+
+                return false;
+            } else
+                return true;
+        }
+
+
+        function validarFormulario(event) {
+            if (validarNombre() && validarClave())
+                alert("Validación validada correctamente");
+            else {
+                alert("Validación NO validada correctamente");
+            }
+        }
+    </script>
+</body>
+
+</html>

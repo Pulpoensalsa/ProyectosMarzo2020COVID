@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let httpRequest;
+
+        if (window.XMLHttpRequest) {
+            httpRequest = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {   // Es para “Microsoft Explorer”
+            httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            console.log("Objeto creado con ActiveXObject.");
+        } else {
+            console.error("Error: Este navegador no admite AJAX.");
+        }
+          httpRequest.onreadystatechange = function () {
+                console.log("Ha cambiado el estado de la petición.");
+        }
+        
+        httpRequest.open('GET', 'http://www.example.com', true);
+        httpRequest.send(null);
+
+    </script>
+</body>
+</html>

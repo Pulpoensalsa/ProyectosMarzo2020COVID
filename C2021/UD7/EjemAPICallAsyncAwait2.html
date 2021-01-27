@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="boton">Usuarios</button>
+
+    <img id="avatar" src="" alt="">
+
+    <!-- <script src="api.js"></script> -->
+
+    <script>
+        function pintarFotoUsuario(datos) {
+            let urlFoto = datos.results[0].picture.large;
+            document.getElementById("avatar").src = urlFoto;
+        }
+
+        document.getElementById("boton").addEventListener("click", function () {
+            hacerLlamadaAPI();         
+        });
+
+        async function hacerLlamadaAPI(){
+            try{
+                let respuesta = await llamadaGetAPI("https://randomuser.me/api/");
+                pintarFotoUsuario(respuesta);
+            }
+            catch(err){
+                console.log("Se ha producido un error:" + err);
+            }
+        }
+
+        function llamadaGetAPI(url) {
+                const client = new XMLHttpRequest();
+                client.addEventListener("readystatechange", () => {
+                    if (client.readyState === 4 && client.status === 200) {
+                        return(client.response);
+                    } else if (client.readyState === 4 && client.status != 200) {
+                        return new Error("Algo ha fallado");
+                    }
+                });
+
+                client.overrideMimeType("application/json");
+                client.responseType = "json";
+                client.open("GET", url);
+                client.send(); //Envia la llamada
+        }
+    </script>
+</body>
+</html>

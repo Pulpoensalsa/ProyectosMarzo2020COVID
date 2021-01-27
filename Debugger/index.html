@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Chrome Debugging</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    h1 {
+      font-size: 1.5em
+    }
+    h4 {
+      display: inline-block
+    }
+
+    input, button {
+      min-width: 72px;
+      min-height: 36px;
+      border: 1px solid green;
+    }
+
+    label, input, button {
+      display: block;
+    }
+
+    input {
+      margin-bottom: 1em;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>Debugueando una Calculador de Propinas</h1>
+  <label for="item1">Plato 1</label>
+  <input placeholder="Plato 1" id="item1">
+  <label for="item2">Plato 2</label>
+  <input placeholder="Plato 2" id="item2">
+  <label for="item3">Plato 3</label>
+  <input placeholder="Plato 3" id="item3">
+  <label for="tax">Impuesto</label>
+  <input placeholder="Porcentaje" id="tax">
+  <label for="tip">Propina</label>
+  <h4>10%<input type="radio" name="tip" placeholder="10%" id="10"></h4>
+  <h4>15%<input type="radio" name="tip" placeholder="15%" id="15"></h4>
+  <h4>20%<input type="radio" name="tip" placeholder="20%" id="20"></h4>
+  <button>Calculando Ticket</button>
+  <br />
+  <label for="total">Precio Total</label>
+  <p id='first'></p>
+  <p id='second'></p>
+  <p id='third'></p>
+  <script>
+    function onClick() {
+      if (emptyInput()) {
+        output.textContent = 'Error: una o más entradas están vacías';
+        return;
+      }
+      outputResults();
+    }
+    
+    function emptyInput() {
+      if (getPlato1() === '' || getPlato2() === '' || getPlato3() === '') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function outputResults() {
+      let Plato1 = getPlato1();
+      let Plato2 = getPlato2();
+      let Plato3 = getPlato3();
+      let tax = getTax();
+      let tip = getTip();
+
+      let subTotal = Plato1 + Plato2 + Plato3
+      subTotal = Math.round(subTotal * 100) / 100
+      let printSubTotal = `Plato 1: ${Plato1} + Plato 2: ${Plato2} + Plato 3: ${Plato3} = Subtotal: ${subTotal}`;
+      document.querySelector('#first').innerHTML = printSubTotal;
+
+      let total = (subTotal * (1 + tax / 100));
+      total = Math.round(total * 100) / 100;
+      let printTotal = `Total: ${total}`;
+      document.querySelector('#second').innerHTML = printTotal;
+
+      let totalTip = total * (1 + tip / 100);
+      totalTip = Math.round(totalTip * 100) / 100;
+      let printTotalTip = `Precio total más propina: ${totalTip} `;
+      document.querySelector('#third').innerHTML = printTotalTip;
+    }
+
+    function getPlato1() {
+      return document.querySelector('#item1').value;
+    }
+
+    function getPlato2() {
+      return document.querySelector('#item2').value;
+    }
+
+    function getPlato3() {
+      return document.querySelector('#item3').value;
+    }
+
+    function getTax() {
+      return document.querySelector('#tax').value;
+    }
+
+    function getTip() {
+      if (document.getElementById('10')) {
+        return 10
+      } else if (document.getElementById('15')) {
+        return 15
+      } else if (document.getElementById('20')) {
+        return 20
+      }
+    }
+
+    let output = document.querySelector('p');
+    let button = document.querySelector('button');
+    button.addEventListener('click', onClick);
+
+  </script>
+</body>
+</html>

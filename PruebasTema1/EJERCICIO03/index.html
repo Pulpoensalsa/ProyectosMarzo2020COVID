@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ejercicio 03</title>
+</head>
+<body>
+<p id="demo" onclick="miFuncion()">Hazme Click</p>
+<p id="demo" onclick="miFuncion2()">Ejercicio2</p>
+<p id="demo" onclick="miFuncion3()">Ejercicio3</p>
+<script>
+function miFuncion() {
+  
+document.getElementById("demo").innerHTML = "¡ME HAS HECHO CLICK!";
+var boton = document.createElement("button");
+boton.innerHTML = "Ejercicio 03";
+document.body.appendChild(boton);
+
+boton.onclick = function() {
+  window.open('', '_blank');
+}
+}
+
+let nuevaVentana;
+
+
+function miFuncion2() {
+	if ((nuevaVentana == undefined) || (nuevaVentana.closed)) {
+		nuevaVentana = window.open('', "Ejercicio 02", "toolbar=1,scrollbars=1,resizable=0,width=400,height=400");
+		console.log("Abriendo ventana");
+	}
+	else {
+		console.log("La ventana ya estaba abierta");
+	}
+}
+	
+function miFuncion3() {
+		if ((nuevaVentana == undefined) || (nuevaVentana.closed)) {
+			console.log("La ventana ya estaba cerrada");
+		}
+		else {		
+			nuevaVentana.close();
+			console.log("Cerrando ventana");
+		}
+	}
+
+</script>
+
+</body>
+</html>

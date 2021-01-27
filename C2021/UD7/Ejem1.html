@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="empezar">EMPEZAR</button>
+    <script>
+
+        window.onload = iniciar;
+        
+        function iniciar(){
+            document.getElementById("empezar").addEventListener("click", cargaAsincrona);
+        }
+
+        function cargaAsincrona(){
+            let response = fetch('ukelele.png'); // fetch is asynchronous
+            let blob = response.blob();
+        }
+
+
+        ///  CALLBACKS ///
+        function cargaAsincrona( callback ) {
+            let response = fetch('ukelele.png'); // fetch is asynchronous
+            let blob = response.blob();
+        }
+        function pintarImagen( respuesta ) {
+            let blob = respuesta.blob();
+        }
+
+
+
+    </script>
+</body>
+</html>

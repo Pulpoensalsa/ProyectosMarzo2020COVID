@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let prom1 = new Promise( function(resolve , reject){ 
+            //Tarea Pesada:
+            setTimeOut(function(){
+                //Terminemos de hacer la tarea pesada:
+                let datos="Estos son los datos";
+                //resolve(datos);
+                reject("Petao");
+            },2000);
+        }); 
+
+        function getTareaPesada( )
+        {
+            return new Promise( function(resolve , reject) { 
+            //Tarea Pesada:
+            setTimeOut(function(){
+                //Terminemos de hacer la tarea pesada:
+                let datos="Estos son los datos";
+                //resolve(datos);
+                reject("Petao");
+            },2000);})
+        }
+
+        function bienResuelto(resultado){ console.log("Correcto" + resultado);}
+        function malResuelto(error){ console.log("Mal");}
+
+        prom1.then( bienResuelto )
+             .catch( malResuelto )
+             .finally( function(){ console.log("Sí o sí");});
+
+        getTareaPesada().then( function(resultado){ console.log("Correcto" + resultado);})
+             .catch( function(error){ console.log("Mal");})
+             .finally( function(){ console.log("Sí o sí");});
+
+    </script>
+</body>
+</html>

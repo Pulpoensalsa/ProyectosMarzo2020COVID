@@ -1,0 +1,24 @@
+<!DOCTYPE>
+<html xmlns="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ejercicio 06 A</title>
+
+<script >
+var i = parseInt(prompt("Ingrese el primer numero: "));
+var b = parseInt(prompt("Ingrese el segundo numero: "));
+
+function contador() {
+  setInterval(function() {
+    if (i == b) clearInterval(this);
+    else document.write(i++ + " <br>");
+  }, 1000);
+}
+contador();
+</script>
+</head>
+
+<body>
+  
+</body>
+</html>

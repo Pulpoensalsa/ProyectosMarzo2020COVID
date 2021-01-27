@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="boton">Usuarios</button>
+
+    <img id="avatar" src="" alt="">
+    
+    <script src="api.js"></script>
+    
+    <script>
+
+        function pintarFotoUsuario(datos)
+        {
+                let urlFoto = datos.results[0].picture.large;
+                document.getElementById("avatar").src = urlFoto;      
+        }
+
+        function errorProcesandoFoto() {
+            alert("No se ha podido cargar tu foto");
+        }
+
+        document.getElementById("boton").addEventListener("click", function() {
+                llamadaGetAPI ("https://cors-anywhere.herokuapp.com/https://randomuser.me/api/")
+                .then( function (datos) { pintarFotoUsuario(datos);}  )
+                .catch( errorProcesandoFoto);
+
+
+                // Lo mismo pero con ARROW function:
+                // llamadaGetAPI ("https://randomuser.me/api/")
+                // .then( datos  =>  pintarFotoUsuario(datos) )
+                // .catch( errorProcesandoFoto);
+        });
+
+        
+    </script>
+</body>

@@ -32,7 +32,7 @@ function checkEmail(input) {
 function checkRequired(inputArr) {
   inputArr.forEach(function(input) {
     if (input.value.trim() === '') {
-      showError(input, `${getFieldName(input)} es necesario`);
+      showError(input , `${getFieldName(input)} es necesario`);
     } else {
       showSuccess(input);
     }
@@ -62,7 +62,7 @@ function checkPasswordsMatch(input1, input2) {
     showError(input2, 'Passwords no son iguales');
   }
 }
-
+ 
 // Get fieldname
 function getFieldName(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
@@ -99,6 +99,7 @@ form.addEventListener('submit', function(e) {
   //   }
   // });
 //}
+
 
 // // Show input error message
 // function showError(input, message) {

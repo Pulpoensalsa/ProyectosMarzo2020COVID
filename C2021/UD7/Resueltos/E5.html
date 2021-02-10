@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function loadJson(url) {
+            let llamada = await fetch(url);
+            if (llamada.status == 200) {
+                let datos = await llamada.json();
+                return datos;
+            } 
+            else 
+            {
+                throw new Error(llamada.status);
+            }
+        }
+
+        //loadJson('no-such-user.json') // (3)
+        loadJson('ejem.json') // (3)
+            .then ( (datos) => console.log(datos))
+            .catch( (codigoError) => alert(`El codigo de error es ${codigoError}`));  // Error: 404
+    </script>
+</body>
+
+</html>

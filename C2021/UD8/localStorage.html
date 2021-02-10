@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+var persona = {
+
+Nombre: 'Javier',
+Edad: 24,
+Genero: 'Masculino',
+Nacionalidad: 'Española'
+}
+
+//localStorage.setItem('persona', JSON.stringify(persona)); //Almacenar objeto
+let objetillo = JSON.parse(localStorage.getItem('persona')); //Recuperar el objeto
+console.log(objetillo);
+    </script>
+</body>
+</html>

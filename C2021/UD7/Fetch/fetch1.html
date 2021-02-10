@@ -9,34 +9,34 @@
 
 <body>
     <script>
-        // fetch('https://httpbin.org/post', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/x-www-form-urlencoded'
-        //         },
-        //         body: 'a=1&b=2'
-        //     })
-        //     .then(function (response) {
-        //         //console.log('response =', response);
-        //         return response.json();
-        //     })
-        //     .then(function (data) {
-        //         console.log('data = ', data);
-        //     })
-        //     .catch(function (err) {
-        //         console.error(err);
-        //     });
+        fetch('https://httpbin.org/post', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'a=1&b=2'
+            })
+            .then(function (response) {
+                //console.log('response =', response);
+                return response.json();
+            })
+            .then(function (data) {
+                console.log('data = ', data);
+            })
+            .catch(function (err) {
+                console.error(err);
+            });
 
         // Error : TypeError: Failed to execute 'text' on 'Response': body stream already read
 
-        fetch("ejemplo.json")
-        .then ( 
-            response => response.text() 
-            )
-        .then ( 
-            datos => console.log(datos)
-            )
-        .catch( error => console.error("Error : " + error));
+        // fetch("ejemplo.json")
+        // .then ( 
+        //     response => response.text() 
+        //     )
+        // .then ( 
+        //     datos => console.log(datos)
+        //     )
+        // .catch( error => console.error("Error : " + error));
     </script>
 </body>
 

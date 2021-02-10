@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function loadScript(src) 
+        {
+            return new Promise( (resolve, reject) => {
+                let script = document.createElement('script');
+                script.src = src;
+
+                script.onload = () => {
+                    console.log("Hola");
+                    resolve(null, script)};
+                script.onerror = () => reject(new Error(`Script load error for ${src}`));
+
+                document.head.append(script);
+
+
+             } );
+        }
+
+        loadScript("https://cds.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js")
+            .then ( (error, script) => { console.log(script) })
+            .catch( (error, script) => console.error(error));
+
+
+
+    </script>
+</body>
+
+</html>

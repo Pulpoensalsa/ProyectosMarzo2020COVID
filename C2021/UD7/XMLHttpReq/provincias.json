@@ -1,0 +1,7 @@
+{
+    "provincias": [
+          {"nombre": "Almeria", "cp": "04"},
+          {"nombre": "Granada", "cp": "17"},
+          {"nombre": "Jaen", "cp": "25"},
+          {"nombre": "Cordoba", "cp": "43"}    ]  
+}

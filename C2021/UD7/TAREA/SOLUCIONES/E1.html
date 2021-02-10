@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function llamadaServidor(numSegundos, callback) {
+            setTimeout(function () {
+                if(numSegundos == 4000)
+                    callback(new Error("Tiempo de respuesta excedido (max 4 sg).") , null);
+                else{
+                    console.log(`Llamada al servidor de ${numSegundos} sg.`);
+                    callback(null, numSegundos);
+                }
+            }, numSegundos);
+        }
+
+        
+
+        function recibiendoRespuesta1( error , dato ) {
+            if(error)
+                console.error(error);
+            else{
+                console.log("La llamada ha terminado en " + dato + " ms.");
+                llamadaServidor (3000, recibiendoRespuesta2);
+            }
+        }
+
+        function recibiendoRespuesta2( error , dato ) {
+            if(error)
+                console.error(error);
+            else{
+                console.log("La llamada ha terminado en " + dato + " ms.");
+                llamadaServidor (4000, recibiendoRespuesta3);
+            }
+        }
+
+        function recibiendoRespuesta3( error , dato ) {
+            if(error)
+                console.error(error);
+            else{
+                console.log("La llamada ha terminado en " + dato + " ms.");
+                console.log("Hemos terminado todo perfecto");
+            }
+        }
+
+        
+
+
+    </script>
+</body>
+
+</html>

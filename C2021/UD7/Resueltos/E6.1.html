@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const posts = [
+    {title: "Post1", body: "This is post one"},
+    {title: "Post2", body: "This is post two"}
+];
+
+    function getPosts(callback){
+        setTimeout(()=> 
+        {
+            let output =``;
+            posts.forEach( (post, index) => {
+                output += `<li>${post.title}</li>`;
+            })
+            document.body.innerHTML = output;
+            callback();
+        }
+        , 1000);
+    }
+
+    function createPost (newPost ,callback) {
+        setTimeout( () => 
+        { 
+            posts.push(newPost);
+            callback();
+        } , 2000);
+    }
+
+    createPost({title: "Post3", body: "This is post three"} , finiquitao);
+
+    function finiquitao(){
+        getPosts(publicado);
+    }
+    function publicado(){
+        console.log("Se ha publicado correctamente");
+    }
+
+    </script>
+</body>
+</html>

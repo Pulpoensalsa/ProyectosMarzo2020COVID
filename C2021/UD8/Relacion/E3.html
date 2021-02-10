@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="small-container">
+        <h1>Probando sistemas de almacenamiento</h1>
+   
+        <form>
+          <input id="item" type="text" placeholder="New">
+        </form>
+   
+        <h2>Elementos</h2>
+        <ul id="lista"></ul>
+   
+        <button id="cleanAll">Limpiar todo</button>
+    </div>
+
+    <script>
+
+        window.onload= iniciar;
+
+        let campoTxt, lista, limpiarBtn;
+
+        let tareasAnteriores="";
+        const CLAVE  = "tareas";
+        
+        function iniciar()
+        {
+            campoTxt = document.getElementById("item");
+            // campoTxt.addEventListener("keyup", function(event) {
+            //     if (event.key === "Enter") {
+            //     }
+            // });
+
+            lista = document.getElementById("lista");
+            
+            limpiarBtn = document.getElementById("cleanAll");
+            limpiarBtn.addEventListener("click", limpiarTodo);
+
+            document.getElementsByTagName("form")[0].addEventListener("keydown", function (event){
+                if (event.key == "Enter") {
+                    event.preventDefault();
+                    anadirNuevaTarea();
+                }
+            });
+
+            cargarTareasAnteriores();
+        }
+
+        function cargarTareasAnteriores(){
+            tareasAnteriores = localStorage.getItem(CLAVE);
+            if(tareasAnteriores != null && tareasAnteriores!="")
+            {
+                let listaTareas = tareasAnteriores.split(";");
+                for( let i=0; i < listaTareas.length  ; i++)
+                {
+                    if(listaTareas[i]!=""){
+                        let li = document.createElement("li");
+                        li.appendChild(document.createTextNode(listaTareas[i]));
+                        lista.appendChild(li);
+                    }
+                }
+            }
+        }
+
+        function anadirNuevaTarea(){
+            let nuevaTarea = campoTxt.value;
+            if( nuevaTarea !="")
+            {
+                let li = document.createElement("li");
+                li.appendChild(document.createTextNode(nuevaTarea));
+                lista.appendChild(li);
+
+                tareasAnteriores = localStorage.getItem(CLAVE);
+                
+                if (tareasAnteriores == null)
+                    tareasAnteriores="";
+
+                tareasAnteriores += nuevaTarea + ";";
+            
+                localStorage.setItem(CLAVE, tareasAnteriores);
+            }
+        }
+
+        function limpiarTodo(){
+            lista.innerHTML = "";
+            localStorage.removeItem(CLAVE);
+        }
+        
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        async function loadJson(url) {
+            let respuesta;
+            try{
+                respuesta = await fetch(url);
+            }
+            catch {
+                throw new Error("Algo raro ha pasado en la llamada");
+            }
+                
+                if (respuesta.status == 200)
+                {
+                    try {
+                        let datosDigeridos = await respuesta.json();
+                        return datosDigeridos;
+                    }
+                    catch{
+                        throw new Error("Algo ha petao obteniendo el objet json");
+                    }
+            
+                 } else
+                    throw new Error(respuesta.status);
+        }
+        
+
+        loadJson('ejemplo.txt')
+            .then ( (json) => {
+                console.log("Recibido");
+                console.log("El Json: " + JSON.stringify(json) )})
+            .catch(alert); // Error: 404
+
+            
+    </script>
+</body>
+
+</html>

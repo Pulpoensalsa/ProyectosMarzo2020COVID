@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+    <h1>Festivals 2015</h1>
+
+    <script>
+        let httpRequest = new XMLHttpRequest();
+
+        httpRequest.onload = procesarRespuesta;
+        httpRequest.open('GET', 'https://cors-anywhere.herokuapp.com/http://dades.eicub.net/api/1/festivals-assistents?Any=2015&format=json.xml', true)
+        httpRequest.overrideMimeType('text/plain');
+        httpRequest.send(null);
+
+        function procesarRespuesta() {
+            let resposta = JSON.parse(httpRequest.responseText);
+            let lista = document.createElement('ul');
+            console.log(resposta);
+
+            for (let i = 0; i < resposta.length; i++) {
+                let item = processarDada(resposta[i]);
+                lista.appendChild(item);
+            }
+
+            document.body.appendChild(lista);
+        }
+
+        function processarDada(dada) {
+            var item = document.createElement('li');
+            var enllac = document.createElement('a');
+            enllac.textContent = dada.NomDelFestival;
+            if (dada.Web) {
+                enllac.setAttribute('href', dada.Web);
+            }
+            enllac.setAttribute('title', dada.Organitzador);
+            item.appendChild(enllac);
+
+            return item;
+        }
+    </script>
+</body>
+
+</html>

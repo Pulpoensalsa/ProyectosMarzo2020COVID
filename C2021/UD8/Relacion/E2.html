@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Probando sistemas de almacenamiento</h1>
+   
+        <form>
+          <input id="item" type="text" placeholder="New">
+          <button id="enviar">Enviar</button>
+        </form>
+   
+        <h2>Numero de reintentos: </h2>
+        <label id=numeroReintentos></label>
+   
+        <button id="limpiar">Limpiar Numero de reintentos</button>
+
+    <script>
+        window.onload = iniciar;
+        let numReintentos = 0;
+        const CLAVE = "NREINTENTOS";
+
+        function iniciar(){
+            let enviarBtn = document.getElementById("enviar");
+            enviarBtn.addEventListener("click", enviar);
+
+            let limpiarBtn =  document.getElementById("limpiar").addEventListener("click", function(){
+                reiniciarNumReintentos();
+                document.getElementById("numeroReintentos").textContent = 0;
+            } );
+        }
+
+        function enviar(){
+            if(document.getElementById("item").value == ""){
+                alert("Campo vacío");
+                incrementarNumReintentos();
+                alert("Numero reintentos" + window.localStorage.getItem(CLAVE));
+               // document.getElementById("numeroReintentos").textContent = window.localStorage.getItem(CLAVE);
+            }
+        }
+
+        function incrementarNumReintentos(){
+            let temp = window.localStorage.getItem(CLAVE);
+            if(temp == "")
+                temp = 0;
+            temp = -temp + 1 ;
+            window.localStorage.setItem(CLAVE , temp);
+        }
+
+        function reiniciarNumReintentos(){
+            window.localStorage.setItem(CLAVE , 0);
+        }
+        https://v6.exchangerate-api.com/v6/18c07cd7760d1a5d93403a24/latest/        
+    </script>
+
+Francisco Javier Barquier - El botón intercambiar debía de tener otra funcionalidad. En general funciona, pero te ha faltado también poner el tipo de cambio. Debes fijarte mejor y más en lo que se pide en los ejercicios.
+Ismael - Cuando pulsas el botón intercambiar se vuelve loca la aplicación. En líneas generales, funciona. 
+Laureano se lía 
+Quero no extrae bien la información. 
+Juan Jose parra --> la funcionalidad del botón intercambiar no es esa. y no muestra el label con el tipo de cambio 
+Jose Francisco Yepes --> No funciona nada.
+Jose david Ruiz Montoya  --> No sé, muy raro, llamas 2 veces a un método que no existe. No funciona nada.
+Sergio no extrae bien la información del json que viene del servidor. No funiona nada.
+Selene, todo muy bien pero cuando cambias de moneda, debería de actualizarse también los valores. Nada una cosica pequeña sin importancia. 
+</body>
+</html>

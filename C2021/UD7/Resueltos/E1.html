@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script >
+        function llamadaServidor(numSegundos, callback) {
+            setTimeout(function () {
+                console.log(`Llamada al servidor de ${numSegundos} sg.`);
+                if (numSegundos >= 4000)
+                    callback(new Error("Algo malo ha pasado"), null);
+                else
+                    callback(null,numSegundos);
+            }, numSegundos);
+        }
+
+        llamadaServidor(2000, resultadollamada1);
+
+        function resultadollamada1(error , tiempo){
+            if(error)
+                console.error(error);
+            else {
+                console.log(`La primera llamada ha tardado ${tiempo}`);
+                llamadaServidor (3000 , resultadollamada2);
+            } 
+        }
+        function resultadollamada2(error , tiempo){
+            if(error)
+                console.error(error);
+            else {
+                console.log(`La segunda llamada ha tardado ${tiempo}`);
+                llamadaServidor (4000 , resultadollamada3);
+            } 
+        }
+
+        function resultadollamada3(error , tiempo){
+            if(error)
+                console.error(error);
+            else {
+                console.log(`La tercera llamada ha tardado ${tiempo}`);
+                console.log(`Todo ha terminado feten`);
+            } 
+        }
+
+    </script>
+</body>
+
+</html>

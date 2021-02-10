@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const posts = [
+    {title: "Post1", body: "This is post one"},
+    {title: "Post2", body: "This is post two"}
+];
+
+    function getPosts(){
+        return new Promise ( (resolve, reject) => {
+            setTimeout(()=> 
+            {
+                let output =``;
+                posts.forEach( (post, index) => {
+                    output += `<li>${post.title}</li>`;
+                })
+                document.body.innerHTML = output;
+                resolve();
+            }
+            , 1000);
+        });
+    }
+
+    function createPost (newPost) {
+        return new Promise ( (resolve, reject) => {
+        setTimeout( () => 
+        { 
+            posts.push(newPost);
+            resolve();
+        } , 2000);
+
+        }); 
+    }
+
+    async function publicar(){
+        await createPost({title: "Post3", body: "This is post three"});
+        await getPosts();
+        console.log("Todo esta bien publicado");
+    }
+ 
+    publicar();
+
+    </script>
+</body>
+</html>
